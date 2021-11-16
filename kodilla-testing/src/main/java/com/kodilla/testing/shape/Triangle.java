@@ -49,7 +49,7 @@ public class Triangle implements Shape {
     }
 
     public String getShapeName(){
-        return "Triangle";
+        return name;
     }
 
     public double getField(){

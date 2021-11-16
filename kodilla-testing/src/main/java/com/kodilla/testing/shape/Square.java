@@ -40,7 +40,7 @@ public class Square implements Shape {
     }
 
     public String getShapeName(){
-        return "Square";
+        return name;
     }
 
     public double getField(){
