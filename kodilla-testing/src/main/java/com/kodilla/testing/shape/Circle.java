@@ -2,22 +2,15 @@ package com.kodilla.testing.shape;
 
 public class Circle implements Shape {
 
-    private double PI = 3.14;
-    private double r;
-    private String name;
+    private static final String name = "Circle";
+    private final double PI = 3.14;
+    private final double r;
 
-    public Circle(double r, String name) {
+
+    public Circle(double r) {
         this.r = r;
-        this.name = name;
     }
 
-    public double getR() {
-        return r;
-    }
-
-    public String getName() {
-        return name;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -26,9 +19,7 @@ public class Circle implements Shape {
 
         Circle circle = (Circle) o;
 
-        if (Double.compare(circle.PI, PI) != 0) return false;
-        if (Double.compare(circle.r, r) != 0) return false;
-        return name != null ? name.equals(circle.name) : circle.name == null;
+        return Double.compare(circle.r, r) == 0;
     }
 
     @Override
@@ -39,12 +30,11 @@ public class Circle implements Shape {
         result = (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(r);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 
     public String getShapeName(){
-        return "Circle";
+        return name;
     }
 
     public double getField(){
