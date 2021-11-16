@@ -54,15 +54,13 @@ public class ShapeCollectorTestSuite {
     void testGetFigure(){
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        ShapeCollector shapeCollector2 = new ShapeCollector();
-        ShapeCollector shapeCollector3 = new ShapeCollector();
         shapeCollector.addFigure(new Circle(8.0));
-        shapeCollector2.addFigure(new Circle(4.0));
-        shapeCollector3.addFigure(new Circle(2.0));
+        shapeCollector.addFigure(new Circle(4.0));
+        shapeCollector.addFigure(new Circle(2.0));
         //When
         Shape gainedShape = shapeCollector.getFigure(0);
         //Then
-        assertEquals(shapeCollector,gainedShape);
+        assertEquals(new Circle(8.0),gainedShape);
 
     }
 
@@ -70,11 +68,9 @@ public class ShapeCollectorTestSuite {
     void testShowFigures(){
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        ShapeCollector shapeCollector2 = new ShapeCollector();
-        ShapeCollector shapeCollector3 = new ShapeCollector();
         shapeCollector.addFigure(new Circle(2.0));
-        shapeCollector2.addFigure(new Circle(4.0));
-        shapeCollector3.addFigure((new Circle(8.0)));
+        shapeCollector.addFigure(new Circle(4.0));
+        shapeCollector.addFigure((new Circle(8.0)));
         //When
         String names = shapeCollector.showFigures();
         //Then
