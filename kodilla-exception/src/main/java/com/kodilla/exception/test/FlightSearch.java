@@ -10,17 +10,22 @@ public class FlightSearch {
         flights.put("Gdansk", true);
         flights.put("Wroclaw", false);
         flights.put("Krakow", true);
-        for (String city : flights.keySet()) {
-            if (!city.equals(flight.getArrivalAirport())) {
-                throw new RouteNotFoundException();
-            }
-        }
+
+
+                if (!flights.containsKey(flight.getArrivalAirport())) {
+                    throw new RouteNotFoundException();
+                } else if (flights.get(flight.getArrivalAirport())) {
+                    System.out.println("There is a flight to " + flight.getArrivalAirport());
+                } else {
+                    System.out.println("There isn't any flight to " + flight.getArrivalAirport());
+                }
+
 
     }
 
     public static void main(String[] args) {
-        Flight flightOne = new Flight("Krakow", "Poznan");
-        //Flight flightTwo = new Flight("Poznan", "Wroclaw");
+        Flight flightOne = new Flight("Poznan", "Krakow");
+        Flight flightTwo = new Flight("Wroclaw", "Poznan");
         //Flight flightThree = new Flight("Wroclaw", "Warszawa");
         FlightSearch flightSearch = new FlightSearch();
         try{
