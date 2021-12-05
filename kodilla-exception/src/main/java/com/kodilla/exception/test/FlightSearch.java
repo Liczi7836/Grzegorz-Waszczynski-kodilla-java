@@ -4,20 +4,24 @@ import java.util.HashMap;
 
 public class FlightSearch {
 
-    HashMap<String, Boolean> flights = new HashMap<>();
+    HashMap<String, Boolean> flights = new HashMap<>(){{
+        put("Gdansk", true);
+        put("Wroclaw", false);
+        put("Krakow", true);
+    }};
+
+
 
     public void findFlight(Flight flight) throws RouteNotFoundException {
-        flights.put("Gdansk", true);
-        flights.put("Wroclaw", false);
-        flights.put("Krakow", true);
+
 
 
                 if (!flights.containsKey(flight.getArrivalAirport())) {
                     throw new RouteNotFoundException();
                 } else if (flights.get(flight.getArrivalAirport())) {
-                    System.out.println("There is a flight to " + flight.getArrivalAirport());
+                    System.out.println("There is a flight from " + flight.getDepartureAirport() + " to " + flight.getArrivalAirport());
                 } else {
-                    System.out.println("There isn't any flight to " + flight.getArrivalAirport());
+                    System.out.println("There is a flight from " + flight.getDepartureAirport() + " to " + flight.getArrivalAirport());
                 }
 
 
