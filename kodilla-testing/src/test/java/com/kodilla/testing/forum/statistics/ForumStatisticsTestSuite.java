@@ -43,7 +43,7 @@ public class ForumStatisticsTestSuite {
         void testWithZeroPosts() {
 
             //Given
-            CalculatingStatistics calculatingStatistics = new CalculatingStatistics(statisticsMock);
+            CalculatingStatistics calculatingStatistics = new CalculatingStatistics();
             List <String> listOfUsers = generateListOfUsers(10);
             int postsNo = generateNumberOfPosts(0);
 
@@ -63,7 +63,7 @@ public class ForumStatisticsTestSuite {
         void testWith1000Posts() {
 
             //Given
-            CalculatingStatistics calculatingStatistics = new CalculatingStatistics(statisticsMock);
+            CalculatingStatistics calculatingStatistics = new CalculatingStatistics();
             List<String> listOfUsers = generateListOfUsers(10);
             int postsNo = generateNumberOfPosts(1000);
 
@@ -83,7 +83,7 @@ public class ForumStatisticsTestSuite {
         void testWith0Comments() {
 
             //Given
-            CalculatingStatistics calculatingStatistics = new CalculatingStatistics(statisticsMock);
+            CalculatingStatistics calculatingStatistics = new CalculatingStatistics();
             List<String> listOfUsers = generateListOfUsers(10);
             int postsNo = generateNumberOfPosts(1000);
             int commentsNo = generateNumberOfCommnets(0);
@@ -105,7 +105,7 @@ public class ForumStatisticsTestSuite {
         void testWithLessCommentsThanPosts() {
 
             //Given
-            CalculatingStatistics calculatingStatistics = new CalculatingStatistics(statisticsMock);
+            CalculatingStatistics calculatingStatistics = new CalculatingStatistics();
             List<String> listOfUsers = generateListOfUsers(10);
             int postsNo = generateNumberOfPosts(20);
             int commentsNo = generateNumberOfCommnets(10);
@@ -127,7 +127,7 @@ public class ForumStatisticsTestSuite {
         void testWithMoreCommentsThanPosts() {
 
             //Given
-            CalculatingStatistics calculatingStatistics = new CalculatingStatistics(statisticsMock);
+            CalculatingStatistics calculatingStatistics = new CalculatingStatistics();
             List<String> listOfUsers = generateListOfUsers(10);
             int postsNo = generateNumberOfPosts(10);
             int commentsNo = generateNumberOfCommnets(20);
@@ -149,7 +149,7 @@ public class ForumStatisticsTestSuite {
         void testWithZeroUsers() {
 
             //Given
-            CalculatingStatistics calculatingStatistics = new CalculatingStatistics(statisticsMock);
+            CalculatingStatistics calculatingStatistics = new CalculatingStatistics();
             List<String> listOfUsers = generateListOfUsers(0);
 
             when(statisticsMock.usersNames()).thenReturn(listOfUsers);
@@ -167,7 +167,7 @@ public class ForumStatisticsTestSuite {
         void testWith100Users() {
 
             //Given
-            CalculatingStatistics calculatingStatistics = new CalculatingStatistics(statisticsMock);
+            CalculatingStatistics calculatingStatistics = new CalculatingStatistics();
             List<String> listOfUsers = generateListOfUsers(100);
 
             when(statisticsMock.usersNames()).thenReturn(listOfUsers);
