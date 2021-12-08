@@ -5,11 +5,13 @@ public class Company {
     private String companyName;
     private String productType;
     private int quantity;
+    private int ID;
 
-    public Company(String companyName, String productType, int quantity) {
+    public Company(String companyName, String productType, int quantity, int ID) {
         this.companyName = companyName;
         this.productType = productType;
         this.quantity = quantity;
+        this.ID = ID;
     }
 
     public String getCompanyName() {
@@ -22,5 +24,9 @@ public class Company {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public int getID(){
+        return ID;
     }
 }
