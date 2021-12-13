@@ -1,24 +1,33 @@
 package com.kodilla.kodillagoodpatterns.Food2Door;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 public class OrdersProcessor {
-    private SendingService sendingService;
+    private Set<ShopService> shopServices;
     private OrdersRepository ordersRepository;
     private boolean isSent;
 
-
-    public OrdersProcessor(final SendingService sendingService, final OrdersRepository ordersRepository) {
-        this.sendingService = sendingService;
+    public OrdersProcessor(final Set<ShopService> shopServices, final OrdersRepository ordersRepository) {
+        this.shopServices = shopServices;
         this.ordersRepository = ordersRepository;
     }
 
     public OrdersProcessorDto process(final OrderRequest orderRequest) {
-        isSent = sendingService.send(orderRequest.getCompany(), orderRequest.getProductType(), orderRequest.getQuantity());
+        int shopId = orderRequest.getCompanyID();
+
+        ShopService shopService = shopServices.stream()
+                .filter(shop -> shop.getId() == shopId).findAny()
+                .orElseThrow();
+
+        isSent = shopService.send(orderRequest.getCompanyName(), orderRequest.getProductType(), orderRequest.getQuantity());
 
         if (isSent) {
-            ordersRepository.createOrder(orderRequest.getCompany(), orderRequest.getProductType(), orderRequest.getQuantity());
-            return new OrdersProcessorDto(orderRequest.getCompany(), true);
+            ordersRepository.createOrder(orderRequest.getCompanyName(), orderRequest.getProductType(), orderRequest.getQuantity());
+            return new OrdersProcessorDto(orderRequest.getCompanyName(), true);
         } else {
-            return new OrdersProcessorDto(orderRequest.getCompany(), false);
+            return new OrdersProcessorDto(orderRequest.getCompanyName(), false);
         }
     }
 }

@@ -1,31 +1,25 @@
 package com.kodilla.kodillagoodpatterns.Food2Door;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class OrderRequestRetriever {
-    private List<Company> companyList = new ArrayList<>();
 
-    public OrderRequest retrieve(int companyID){
-        Company ExtraFoodShop = new Company("ExtraFoodShop", "Meat", 1000, 1);
-        Company HealthyShop = new Company("HealthyShop", "Healthy Food", 500, 2);
-        Company GlutenFreeShop = new Company("GlutenFreeShop", "Gluten Free Food", 400, 3);
-        companyList.add(ExtraFoodShop);
-        companyList.add(HealthyShop);
-        companyList.add(GlutenFreeShop);
-        String productType = "";
-        int quantity = 0;
-        int ID = 0;
-        for (Company company : companyList){
-            if(companyID == company.getID()){
-                productType = company.getProductType();
-                quantity = company.getQuantity();
-                ID = company.getID();
-            }
-        }
+    private final Map<Integer, Company> companies = new HashMap<>();
 
-    return new OrderRequest(ExtraFoodShop,productType,quantity,ID);
+    public OrderRequestRetriever() {
+        companies.put(1, new Company("ExtraFoodShop", "Meat", 1000, 1));
+        companies.put(2, new Company("HealthyShop", "Healthy Food", 500, 2));
+        companies.put(3, new Company("GlutenFreeShop", "Gluten Free Food", 400, 3));
     }
 
+    public OrderRequest retrieve(int companyID) {
+        Company company = companies.get(companyID);
 
+        String companyName = company.getCompanyName();
+        String productType = company.getProductType();
+        int quantity = company.getQuantity();
+
+        return new OrderRequest(companyName, productType, quantity, companyID);
+    }
 }
