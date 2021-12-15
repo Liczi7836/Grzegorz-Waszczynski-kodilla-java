@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Component;
 
 
-@SpringBootTest(classes = Calculator.class)
+@SpringBootTest
 @Component
 public class CalculatorTestSuite {
 
