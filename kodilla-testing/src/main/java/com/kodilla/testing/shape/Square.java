@@ -2,21 +2,13 @@ package com.kodilla.testing.shape;
 
 public class Square implements Shape {
 
-    private String name;
-    private double a;
+    private static final String name = "Square";
+    private final double a;
 
-    public Square(String name, double a) {
-        this.name = name;
+    public Square(double a) {
         this.a = a;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public double getA() {
-        return a;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -25,18 +17,13 @@ public class Square implements Shape {
 
         Square square = (Square) o;
 
-        if (Double.compare(square.a, a) != 0) return false;
-        return name != null ? name.equals(square.name) : square.name == null;
+        return Double.compare(square.a, a) == 0;
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = name != null ? name.hashCode() : 0;
-        temp = Double.doubleToLongBits(a);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
+        long temp = Double.doubleToLongBits(a);
+        return (int) (temp ^ (temp >>> 32));
     }
 
     public String getShapeName(){

@@ -1,7 +1,8 @@
 package com.kodilla.testing.shape;
 
-
 import org.junit.jupiter.api.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("TDD: Shape Collector Test Suite")
 public class ShapeCollectorTestSuite {
@@ -30,9 +31,9 @@ public class ShapeCollectorTestSuite {
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
         //When
-        shapeCollector.addFigure(new Circle(8.0,"Circle1"));
+        shapeCollector.addFigure(new Circle(8.0));
         //Then
-        Assertions.assertEquals(1,shapeCollector.getShapesQuantity());
+        assertEquals(1,shapeCollector.getShapesQuantity());
 
     }
 
@@ -40,12 +41,12 @@ public class ShapeCollectorTestSuite {
     void testRemoveFigure(){
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        shapeCollector.addFigure(new Circle(8.0,"Circle1"));
+        shapeCollector.addFigure(new Circle(8.0));
         //When
-        boolean result = shapeCollector.removeFigure(new Circle(8.0,"Circle1"));
+        boolean result = shapeCollector.removeFigure(new Circle(8.0));
         //Then
         Assertions.assertTrue(result);
-        Assertions.assertEquals(0,shapeCollector.getShapesQuantity());
+        assertEquals(0,shapeCollector.getShapesQuantity());
 
     }
 
@@ -53,13 +54,13 @@ public class ShapeCollectorTestSuite {
     void testGetFigure(){
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        shapeCollector.addFigure(new Circle(8.0,"Circle1"));
-        shapeCollector.addFigure(new Circle(4.0,"Circle2"));
-        shapeCollector.addFigure(new Circle(2.0,"Circle3"));
+        shapeCollector.addFigure(new Circle(8.0));
+        shapeCollector.addFigure(new Circle(4.0));
+        shapeCollector.addFigure(new Circle(2.0));
         //When
-        Shape gainedShape = shapeCollector.getFigure(1);
+        Shape gainedShape = shapeCollector.getFigure(0);
         //Then
-        Assertions.assertEquals(new Circle(4.0,"Circle2"),gainedShape);
+        assertEquals(new Circle(8.0),gainedShape);
 
     }
 
@@ -67,14 +68,13 @@ public class ShapeCollectorTestSuite {
     void testShowFigures(){
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-
-        shapeCollector.addFigure(new Circle(8.0,"Circle1"));
-        shapeCollector.addFigure(new Circle(4.0,"Circle2"));
-        shapeCollector.addFigure(new Circle(2.0,"Circle3"));
+        shapeCollector.addFigure(new Circle(2.0));
+        shapeCollector.addFigure(new Circle(4.0));
+        shapeCollector.addFigure((new Circle(8.0)));
         //When
         String names = shapeCollector.showFigures();
         //Then
-        Assertions.assertEquals("Circle1Circle2Circle3",names);
+        assertEquals("CircleCircleCircle",names);
     }
 
 }
