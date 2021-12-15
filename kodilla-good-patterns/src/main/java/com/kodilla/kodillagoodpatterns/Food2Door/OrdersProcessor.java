@@ -5,6 +5,7 @@ import java.util.Set;
 public class OrdersProcessor {
     private Set<ShopService> shopServices;
     private OrdersRepository ordersRepository;
+    private boolean isSent;
 
 
     public OrdersProcessor(final Set<ShopService> shopServices, final OrdersRepository ordersRepository) {
