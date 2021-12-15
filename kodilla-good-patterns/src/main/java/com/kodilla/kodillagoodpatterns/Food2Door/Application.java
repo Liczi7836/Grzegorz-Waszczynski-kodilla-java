@@ -10,7 +10,9 @@ public class Application {
 
     public static void main(String[] args) {
         OrderRequestRetriever orderRequestRetriever = new OrderRequestRetriever();
-        OrderRequest orderRequest = orderRequestRetriever.retrieve(1);
+        OrderRequest ExtraFoodShopOrderRequest = orderRequestRetriever.retrieve(1);
+        OrderRequest HealthyShopOrderRequest = orderRequestRetriever.retrieve(2);
+
 
         Set<ShopService> shopServices = Set.of(new ExtraFoodShop(), new HealthyShop(), new GlutenFreeShop());
 
