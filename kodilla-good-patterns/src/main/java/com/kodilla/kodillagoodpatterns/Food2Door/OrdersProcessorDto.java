@@ -1,15 +1,15 @@
 package com.kodilla.kodillagoodpatterns.Food2Door;
 
 public class OrdersProcessorDto {
-    public Company company;
+    public String company;
     public boolean isSent;
 
-    public OrdersProcessorDto(Company company, boolean isSent) {
+    public OrdersProcessorDto(String company, boolean isSent) {
         this.company = company;
         this.isSent = isSent;
     }
 
-    public Company getCompany() {
+    public String getCompany() {
         return company;
     }
 
