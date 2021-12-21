@@ -4,7 +4,6 @@ import java.util.List;
 
 public interface Statistics {
     List<String> usersNames();
-<<<<<<< HEAD
 
     int postsCount();
 
@@ -12,8 +11,3 @@ public interface Statistics {
 }
 
 
-=======
-    int postsCount();
-    int commentsCount();
-}
->>>>>>> 6.7
