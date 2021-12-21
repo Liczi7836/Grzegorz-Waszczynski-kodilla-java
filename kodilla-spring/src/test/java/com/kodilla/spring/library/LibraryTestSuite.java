@@ -7,8 +7,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootTest(classes = Library.class)
-@ComponentScan("com.kodilla.spring.library")
+import java.util.Arrays;
+
+@SpringBootTest
+@ComponentScan
 class LibraryTestSuite {
 
 
@@ -35,4 +37,16 @@ class LibraryTestSuite {
         //do nothing
     }
 
+    @Test
+    void testContext() {
+        //Given
+        ApplicationContext context =
+                new AnnotationConfigApplicationContext("com.kodilla.spring");
+
+        //When & Then
+        System.out.println("===== Beans list: ==== >>");
+        Arrays.stream(context.getBeanDefinitionNames())
+                .forEach(System.out::println);
+        System.out.println("<< ===== Beans list ====");
+    }
 }
