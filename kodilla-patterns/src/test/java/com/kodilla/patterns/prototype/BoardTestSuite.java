@@ -2,29 +2,34 @@ package com.kodilla.patterns.prototype;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.stream.IntStream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class BoardTestSuite {
 
+    private TasksList create(String taskPrefix, String taskName) {
+        TasksList taskList = new TasksList(taskName);
+        IntStream.iterate(1, n -> n + 1)
+                .limit(10)
+                .forEach(n -> taskList.getTasks().add(new Task(taskPrefix + n)));
+        return taskList;
+    }
+
     @Test
     void testToString() throws CloneNotSupportedException {
         //Given
-        TaskListGenerator taskListGenerator = new TaskListGenerator();
-        taskListGenerator.generateList("To Do Tasks");
-        taskListGenerator.generateList("In Progress Tasks");
-        taskListGenerator.generateList("Done Tasks");
-
-        TasksList listToDo2 = taskListGenerator.getListToDo();
-        TasksList listInProgress2 = taskListGenerator.getListInProgress();
-        TasksList listDone2 = taskListGenerator.getListDone();
+        TasksList listToDo = create("To Do Task number ","To Do Tasks");
+        TasksList listInProgress = create("In Progress Task number ","In Progress Tasks");
+        TasksList listDone = create("Done Task number ","Done Tasks");
 
 
         //creating the board and assigning the lists
         Board board = new Board("Project number 1");
-        board.getLists().add(listToDo2);
-        board.getLists().add(listInProgress2);
-        board.getLists().add(listDone2);
+        board.getLists().add(listToDo);
+        board.getLists().add(listInProgress);
+        board.getLists().add(listDone);
 
 
         Board clonedBoard = board.shallowCopy();
@@ -36,7 +41,7 @@ class BoardTestSuite {
 
 
         //When
-        board.getLists().remove(listToDo2);
+        board.getLists().remove(listToDo);
 
         //Then
         System.out.println(board);
