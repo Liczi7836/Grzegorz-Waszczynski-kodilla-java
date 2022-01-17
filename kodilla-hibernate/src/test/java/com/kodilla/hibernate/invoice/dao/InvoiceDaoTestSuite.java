@@ -32,7 +32,12 @@ public class InvoiceDaoTestSuite {
         Item item4 = new Item(new BigDecimal(1200), 40);
         Item item5 = new Item(new BigDecimal(950), 15);
 
-        Invoice invoice1 = new Invoice("16.01.2022.001");
+        product1.getItems().add(item1);
+        product1.getItems().add(item2);
+        product2.getItems().add(item3);
+        product3.getItems().add(item4);
+        product3.getItems().add(item5);
+
 
         item1.setProduct(product1);
         item2.setProduct(product1);
@@ -40,11 +45,29 @@ public class InvoiceDaoTestSuite {
         item4.setProduct(product3);
         item5.setProduct(product3);
 
+        Invoice invoice1 = new Invoice("16.01.2022.001");
+        List<Item> itemList = new ArrayList<>();
+        itemList.add(item1);
+        itemList.add(item2);
+        itemList.add(item3);
+        itemList.add(item4);
+        itemList.add(item5);
+
+        invoice1.setItems(itemList);
+
+        /*
         invoice1.getItems().add(item1);
         invoice1.getItems().add(item2);
         invoice1.getItems().add(item3);
         invoice1.getItems().add(item4);
         invoice1.getItems().add(item5);
+        */
+
+        item1.setInvoice(invoice1);
+        item2.setInvoice(invoice1);
+        item3.setInvoice(invoice1);
+        item4.setInvoice(invoice1);
+        item5.setInvoice(invoice1);
 
         //When
         invoiceDao.save(invoice1);
@@ -52,6 +75,9 @@ public class InvoiceDaoTestSuite {
 
         //Then
         assertNotEquals(0,invoiceId);
+
+        //Clean
+        invoiceDao.deleteById(invoiceId);
 
     }
 

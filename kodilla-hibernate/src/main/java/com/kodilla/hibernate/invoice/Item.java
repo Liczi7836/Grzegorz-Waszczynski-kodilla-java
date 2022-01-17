@@ -53,6 +53,7 @@ public class Item {
         this.price = price;
     }
 
+    @Column(name = "Quantity")
     public int getQuantity() {
         return quantity;
     }
