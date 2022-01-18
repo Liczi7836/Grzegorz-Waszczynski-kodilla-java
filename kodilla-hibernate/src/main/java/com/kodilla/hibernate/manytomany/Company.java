@@ -7,7 +7,7 @@ import java.util.List;
 
 @NamedNativeQuery(
         name = "Company.retrieveFirstThreeLetters",
-        query = "SELECT LEFT('name', 3) = (:name) FROM COMPANIES",
+        query = "SELECT * FROM COMPANIES where LEFT(COMPANY_NAME, 3) = :name",
         resultClass = Company.class
 
 )

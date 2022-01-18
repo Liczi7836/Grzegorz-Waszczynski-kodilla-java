@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -100,13 +101,14 @@ public class CompanyDaoTestSuite {
         List<Employee> lastNameEmployee = employeeDao.retrieveEmployeeByLastName("Smith");
 
         //Then
+        assertEquals(1,lastNameEmployee.size());
         try {
-            assertEquals(1,lastNameEmployee.size());
-        } finally {
             //ClenUp
             companyDao.deleteById(softwareMachineId);
             companyDao.deleteById(dataMaestersId);
             companyDao.deleteById(greyMatterId);
+        } catch (Exception e){
+            //Do nothing
         }
     }
 
@@ -117,6 +119,8 @@ public class CompanyDaoTestSuite {
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
         Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+
+        //employeeDao.saveAll(List.of(johnSmith,stephanieClarckson,lindaKovalsky));
 
         Company softwareMachine = new Company("Software Machine");
         Company dataMaesters = new Company("Data Maesters");
@@ -145,13 +149,15 @@ public class CompanyDaoTestSuite {
         List<Company> firstThreeOfCompanies = companyDao.retrieveFirstThreeLetters("dat");
 
         //Then
+        assertEquals(1,firstThreeOfCompanies.size());
         try {
-            assertEquals(1,firstThreeOfCompanies.size());
-        } finally {
             //CleanUp
             companyDao.deleteById(softwareMachineId);
             companyDao.deleteById(dataMaestersId);
             companyDao.deleteById(greyMatterId);
+        } catch (Exception e){
+            //Do nothing
+
         }
     }
 }
