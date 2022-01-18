@@ -19,12 +19,17 @@ public class InvoiceDaoTestSuite {
     @Autowired
     private InvoiceDao invoiceDao;
 
+    @Autowired
+    private ProductDao productDao;
+
     @Test
     void testInvoiceDaoSave(){
         //Given
         Product product1 = new Product("First product");
         Product product2 = new Product("Second product");
         Product product3 = new Product("Third product");
+        productDao.saveAll(List.of(product1,product2,product3));
+
 
         Item item1 = new Item(new BigDecimal(1000),25);
         Item item2 = new Item(new BigDecimal(350), 30);
@@ -55,13 +60,6 @@ public class InvoiceDaoTestSuite {
 
         invoice1.setItems(itemList);
 
-        /*
-        invoice1.getItems().add(item1);
-        invoice1.getItems().add(item2);
-        invoice1.getItems().add(item3);
-        invoice1.getItems().add(item4);
-        invoice1.getItems().add(item5);
-        */
 
         item1.setInvoice(invoice1);
         item2.setInvoice(invoice1);

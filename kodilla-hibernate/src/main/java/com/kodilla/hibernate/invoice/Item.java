@@ -67,6 +67,10 @@ public class Item {
     }
 
     public void setValue(BigDecimal value) {
+        this.value = value;
+    }
+
+    public void Value(BigDecimal value) {
         this.value = BigDecimal.valueOf(quantity).multiply(value);
     }
 
