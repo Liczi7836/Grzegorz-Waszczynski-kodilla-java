@@ -4,14 +4,13 @@ import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
 import com.kodilla.hibernate.manytomany.dao.CompanyDao;
 import com.kodilla.hibernate.manytomany.dao.EmployeeDao;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class SearchingFacadeTest {
@@ -19,17 +18,19 @@ class SearchingFacadeTest {
     @Autowired
     private SearchingFacade searchingFacade;
 
-    private EmployeeDao employeeDao;
+    @Autowired
     private CompanyDao companyDao;
 
+    @Autowired
+    private EmployeeDao employeeDao;
 
-    Employee johnSmith = new Employee("John", "Smith");
-    Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
-    Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+    private final Employee johnSmith = new Employee("John", "Smith");
+    private final Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+    private final Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
 
-    Company softwareMachine = new Company("Software Machine");
-    Company dataMaesters = new Company("Data Maesters");
-    Company greyMatter = new Company("Grey Matter");
+    private final Company softwareMachine = new Company("Software Machine");
+    private final Company dataMaesters = new Company("Data Maesters");
+    private final Company greyMatter = new Company("Grey Matter");
 
     @Test
     public void testGetEmployeeByLetters(){
@@ -45,6 +46,10 @@ class SearchingFacadeTest {
         stephanieClarckson.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(greyMatter);
+
+        companyDao.save(softwareMachine);
+        companyDao.save(dataMaesters);
+        companyDao.save(greyMatter);
 
         //When
         List<Employee> employeeByLetters = searchingFacade.employeeSearch("Smi");
@@ -67,6 +72,10 @@ class SearchingFacadeTest {
         stephanieClarckson.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(greyMatter);
+
+        companyDao.save(softwareMachine);
+        companyDao.save(dataMaesters);
+        companyDao.save(greyMatter);
 
         //When
         List<Company> companyByLetters = searchingFacade.companySearch("Soft");
