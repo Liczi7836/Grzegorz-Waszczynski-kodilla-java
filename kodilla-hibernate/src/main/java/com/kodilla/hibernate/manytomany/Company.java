@@ -11,6 +11,12 @@ import java.util.List;
         resultClass = Company.class
 
 )
+@NamedNativeQuery(
+        name = "Company.retrieveCompanyByPartOfName",
+        query = "SELECT * FROM COMPANIES where " +
+                " COMPANY_NAME LIKE '%fragment%'",
+        resultClass = Company.class
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
