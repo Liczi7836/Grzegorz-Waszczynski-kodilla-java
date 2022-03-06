@@ -14,17 +14,9 @@ public class TaxiOrderTestSuite {
         TaxiOrder theOrder = new BasicTaxiOrder();
         //When
         BigDecimal calculatedCost = theOrder.getCost();
+        String description = theOrder.getDescription();
         //Then
         assertEquals(new BigDecimal(5), calculatedCost);
-    }
-
-    @Test
-    public void testBasicTaxiOrderGetDescription(){
-        //Given
-        TaxiOrder theOrder = new BasicTaxiOrder();
-        //Then
-        String description = theOrder.getDescription();
-        //When
         assertEquals("Drive a course", description);
     }
 

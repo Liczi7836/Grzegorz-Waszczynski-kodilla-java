@@ -18,21 +18,10 @@ public class PizzaOrderTestSuite {
         //When
         BigDecimal pizzaCost = pizzaOrder.getPizzaCost();
         System.out.println(pizzaCost);
-        //Then
-        assertEquals(new BigDecimal(23), pizzaCost);
-    }
-
-    @Test
-    public void testBasicPizzaWithBaconPaprikaChickenDescription(){
-        //Given
-        PizzaOrder pizzaOrder = new BasicPizzaOrder();
-        pizzaOrder = new BaconDecorator(pizzaOrder);
-        pizzaOrder = new PaprikaDecorator(pizzaOrder);
-        pizzaOrder = new ChickenMeatDecorator(pizzaOrder);
-        //When
         String description = pizzaOrder.getFullDescription();
         System.out.println(description);
         //Then
+        assertEquals(new BigDecimal(23), pizzaCost);
         assertEquals("Basic pizza: pizza base with tomato sauce and cheese" +
                 " + 1 bacon portion" +
                 " + 1 paprika portion" +
@@ -52,24 +41,10 @@ public class PizzaOrderTestSuite {
         //When
         BigDecimal pizzaCost = pizzaOrder.getPizzaCost();
         System.out.println(pizzaCost);
-        //Then
-        assertEquals(new BigDecimal(31), pizzaCost);
-    }
-
-    @Test
-    public void testBasicPizzaWithAllIngredientsDescription(){
-        //Given
-        PizzaOrder pizzaOrder = new BasicPizzaOrder();
-        pizzaOrder = new BaconDecorator(pizzaOrder);
-        pizzaOrder = new ChickenMeatDecorator(pizzaOrder);
-        pizzaOrder = new MushroomDecorator(pizzaOrder);
-        pizzaOrder = new OnionDecorator(pizzaOrder);
-        pizzaOrder = new PaprikaDecorator(pizzaOrder);
-        pizzaOrder = new SpicyPaprikaDecorator(pizzaOrder);
-        //When
         String description = pizzaOrder.getFullDescription();
         System.out.println(description);
         //Then
+        assertEquals(new BigDecimal(31), pizzaCost);
         assertEquals("Basic pizza: pizza base with tomato sauce and cheese" +
                 " + 1 bacon portion" +
                 " + 1 chicken meat portion" +
@@ -78,4 +53,5 @@ public class PizzaOrderTestSuite {
                 " + 1 paprika portion" +
                 " + 1 spicy paprika portion", description);
     }
+
 }
