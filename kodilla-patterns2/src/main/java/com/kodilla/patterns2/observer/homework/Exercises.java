@@ -18,6 +18,7 @@ public class Exercises implements ExerciseObservable{
 
     public void addExercise(Exercise exercise){
         exerciseList.add(exercise);
+        notifyObservers();
     }
 
     @Override
