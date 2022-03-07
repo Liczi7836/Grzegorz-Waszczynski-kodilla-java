@@ -7,12 +7,14 @@ import java.util.List;
 
 @NamedNativeQuery(
         name = "Employee.retrieveEmployeeByLastName",
-        query = "SELECT * FROM EMPLOYEES where lastname = :lastname"
+        query = "SELECT * FROM EMPLOYEES where lastname = :lastname",
+        resultClass = Employee.class
 )
 @NamedNativeQuery(
         name = "Employee.retrieveEmployeeByPartOfName",
         query = "SELECT * FROM EMPLOYEES where " +
-                " LASTNAME LIKE :partOfName"
+                " LASTNAME LIKE CONCAT('%', :partOfName,'%')",
+        resultClass = Employee.class
 )
 @Entity
 @Table(name = "EMPLOYEES")

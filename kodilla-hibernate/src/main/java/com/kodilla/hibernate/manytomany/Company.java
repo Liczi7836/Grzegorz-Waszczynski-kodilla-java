@@ -14,7 +14,7 @@ import java.util.List;
 @NamedNativeQuery(
         name = "Company.retrieveCompanyByPartOfName",
         query = "SELECT * FROM COMPANIES where " +
-                " COMPANY_NAME LIKE '%fragment%'",
+                " COMPANY_NAME LIKE CONCAT('%', :partOfName,'%')",
         resultClass = Company.class
 )
 @Entity
