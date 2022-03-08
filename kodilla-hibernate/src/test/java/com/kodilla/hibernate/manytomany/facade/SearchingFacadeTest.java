@@ -56,6 +56,8 @@ class SearchingFacadeTest {
 
         //Then
         assertEquals(1,employeeByLetters.size());
+        companyDao.deleteAll();
+
     }
 
     @Test
@@ -82,6 +84,7 @@ class SearchingFacadeTest {
 
         //Then
         assertEquals(1, companyByLetters.size());
+        companyDao.deleteAll();
     }
 
 }
