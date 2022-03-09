@@ -13,11 +13,13 @@ public class MedianAdapter extends MedianAdaptee implements Classifier {
 
     @Override
     public int publicationYearMedian(Set<Book> bookSet){
-        Map<BookSignature, Book> bookMap = new HashMap<>();
+        Map<BookSignature, com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book> bookMap = new HashMap<>();
+
 
         for(Book book : bookSet){
+            com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book bookOne = new com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book(book.getAuthor(),book.getTitle(),book.getPublicationYear());
             BookSignature bookSignature = new BookSignature(book.getSignature());
-            bookMap.put(bookSignature, book);
+            bookMap.put(bookSignature, bookOne);
         }
         return medianPublicationYear(bookMap);
     }
