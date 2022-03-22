@@ -12,17 +12,17 @@ public class StoredProcTestSuite {
 
     @Test
     public void testUpdateVipLevels() throws SQLException {
-        // Given
+        // Given && When
         DbManager dbManager = DbManager.getInstance();
         String sqlUpdate = "UPDATE READERS SET VIP_LEVEL=\"Not set\"";
         Statement statement = dbManager.getConnection().createStatement();
         statement.executeUpdate(sqlUpdate);
-        String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM READERS WHERE VIP_LEVEL=\"Not set\"";
-        ResultSet rs = statement.executeQuery(sqlCheckTable);
 
-        // When
         String sqlProcedureCall = "CALL UpdateVipLevels()";
         statement.execute(sqlProcedureCall);
+
+        String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM READERS WHERE VIP_LEVEL=\"Not set\"";
+        ResultSet rs = statement.executeQuery(sqlCheckTable);
 
         // Then
         int howMany = -1;
@@ -36,24 +36,24 @@ public class StoredProcTestSuite {
 
     @Test
     public void testUpdateBestsellers() throws SQLException{
-        //Given
+        //Given && When
         DbManager dbManager = DbManager.getInstance();
         String sqlUpdate = "UPDATE BOOKS SET BESTSELLER=\"2\"";
         Statement statement = dbManager.getConnection().createStatement();
         statement.executeUpdate(sqlUpdate);
-        String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM BOOKS WHERE BESTSELLER=\"2\"";
-        ResultSet rs2 = statement.executeQuery(sqlCheckTable);
 
-        //When
         String sqlProcedureCall = "CALL UpdateBestsellers()";
         statement.execute(sqlProcedureCall);
+
+        String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM BOOKS WHERE BESTSELLER=\"2\"";
+        ResultSet rs2 = statement.executeQuery(sqlCheckTable);
 
         //Then
         int howMany = -1;
         if (rs2.next()) {
             howMany = rs2.getInt("HOW_MANY");
         }
-        assertEquals(0, howMany);
+        assertEquals(3, howMany);
         rs2.close();
         statement.close();
 
