@@ -7,3 +7,20 @@ CREATE TABLE STATS (
                 
                 
                 
+CREATE VIEW BESTSELLERS_COUNT AS
+    SELECT SUM(BESTSELLER) FROM books
+WHERE BESTSELLER > 0;
+
+
+
+USE kodilla_course;
+CREATE EVENT UPDATE_BESTSELLER
+ON SCHEDULE EVERY 1 MINUTE
+DO
+BEGIN
+    CALL UpdateBestsellers();
+    INSERT INTO stats (STAT_DATE, STAT, VALUE) SELECT CURTIME(), 'BESTSELLERS', `SUM(BESTSELLER)`
+        FROM bestsellers_count
+
+END;
+    END
