@@ -1,0 +1,24 @@
+{
+  "carName": "Didi",
+  "carBrand": "Audi",
+  "seats":[
+    {
+      "seatOne": {
+        "material": "leather",
+        "color": "white"
+      },
+      "seatTwo": {
+        "material": "leather",
+        "color": "white"
+      },
+      "seatThree": {
+        "material": "leather",
+        "color": "white"
+      },
+      "seatFour": {
+        "material": "leather",
+        "color": "white"
+      }
+    }],
+  "engineSize": 2000
+}
