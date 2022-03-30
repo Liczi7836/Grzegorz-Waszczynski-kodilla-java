@@ -85,14 +85,14 @@ public class CrudAppTestSuite {
         buttonGoogle.click();
 
         driverTrello.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div/div[1]/div/div[1]/input"))
-                .sendKeys("grzegorzwaszczynski.real@gmail.com");
+                .sendKeys("");
         WebElement secondButton = driverTrello.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[2]/div/div[1]/div/div/button/div[3]"));
         secondButton.click();
 
         Thread.sleep(10000);
 
         driverTrello.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div[1]/div/div/div/div/div[1]/div/div[1]/input"))
-                        .sendKeys("Plemiona123!");
+                        .sendKeys("");
 
 
         Thread.sleep(20000);
